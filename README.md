@@ -4,7 +4,7 @@ This repository contains a collection of CoreML demo apps, with optimized models
 
 ||||
 | ------------- | ------------- |  ------------- |
-| <video src="https://github.com/huggingface/coreml-examples/assets/1177582/b1e8ee23-90a0-403a-ab15-a57d55959ce7">  | <video src="https://github.com/huggingface/coreml-examples/assets/1177582/64f6ee35-242c-4f97-8a36-4c984d88ff5c">|<video src="https://github.com/huggingface/coreml-examples/assets/1177582/6cc4c180-c345-45b3-9a6b-a18f078df251">|
+| <video src="https://github.com/huggingface/coreml-examples/assets/45471420/04f13819-bdae-4843-9631-940bd9b21b4e">  | <video src="https://github.com/huggingface/coreml-examples/assets/45471420/af373f58-73e8-4dc6-a2a4-4c5abc8c68f0">|<video src="https://github.com/huggingface/coreml-examples/assets/45471420/4b71b9e9-3d63-400c-868e-f0734aba0a6f">|
 
 The models showcased include:
 
