@@ -4,7 +4,7 @@ This repository contains a collection of CoreML demo apps, with optimized models
 
 ||||
 | ------------- | ------------- |  ------------- |
-| <video src="https://github.com/huggingface/coreml-examples/assets/45471420/04f13819-bdae-4843-9631-940bd9b21b4e">  | <video src="https://github.com/huggingface/coreml-examples/assets/45471420/af373f58-73e8-4dc6-a2a4-4c5abc8c68f0">|<video src="https://github.com/huggingface/coreml-examples/assets/45471420/4b71b9e9-3d63-400c-868e-f0734aba0a6f">|
+| <video src="https://github.com/huggingface/coreml-examples/assets/45471420/04f13819-bdae-4843-9631-940bd9b21b4e">  | <video src="https://github.com/huggingface/coreml-examples/assets/45471420/e760cf8b-0f11-4b95-9db6-db4c46d954d6">|<video src="https://github.com/huggingface/coreml-examples/assets/45471420/4b71b9e9-3d63-400c-868e-f0734aba0a6f">|
 
 The models showcased include:
 
@@ -16,3 +16,7 @@ The models showcased include:
 
 
 We leverage [coremltools](https://github.com/apple/coremltools) for testing and implementing these optimisations. You can read more about it [here](https://apple.github.io/coremltools/docs-guides/source/opt-palettization-api.html).
+
+
+
+
