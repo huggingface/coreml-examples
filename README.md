@@ -11,7 +11,7 @@ The models showcased include:
 | Sample Code                                                | Task                       | Core ML packages                                                                                                                                                |
 |------------------------------------------------------------|----------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [FastViT](FastViTSample/README.md)                         | Image Classification       | [ apple/coreml-FastViT-T8 ]( https://huggingface.co/apple/coreml-FastViT-T8 ) [ apple/coreml-FastViT-MA36 ]( https://huggingface.co/apple/coreml-FastViT-MA36 ) |
-| [Depth Anything (small)](depth-anything-example/README.md) | Monocular Depth Estimation | [apple/coreml-depth-anything-small](https://huggingface.co/apple/coreml-depth-anything-small)                                                                   |
+| [Depth Anything V2 (small)](depth-anything-example/README.md) | Monocular Depth Estimation | [apple/coreml-depth-anything-v2-small](https://huggingface.co/apple/coreml-depth-anything-small)                                                                   |
 | [DETR (ResNet 50)](SemanticSegmentationSample/README.md)   | Semantic Segmentation      | [ apple/coreml-detr-semantic-segmentation ]( https://huggingface.co/apple/coreml-detr-semantic-segmentation )                                                   |
 
 
