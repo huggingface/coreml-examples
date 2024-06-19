@@ -19,7 +19,8 @@
 		D8C894D12BEAD1230043DB71 /* CoreImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C894D02BEAD0F50043DB71 /* CoreImageExtensions.swift */; };
 		D8C894D22BEAD1230043DB71 /* CoreImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C894D02BEAD0F50043DB71 /* CoreImageExtensions.swift */; };
 		D8C894D72BED20B00043DB71 /* DepthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C894D62BED20B00043DB71 /* DepthView.swift */; };
-		EB7744DF2C1A52BD009F5293 /* DepthAnythingSmallF16.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = EB7744DD2C1A52BD009F5293 /* DepthAnythingSmallF16.mlpackage */; };
+		EB94266D2C1DAF1D0039A6B1 /* DepthAnythingV2SmallF16.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = EB94266C2C1DAF1D0039A6B1 /* DepthAnythingV2SmallF16.mlpackage */; };
+		EB94266F2C1DB1280039A6B1 /* DepthAnythingSmallF16.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = EB94266E2C1DB1280039A6B1 /* DepthAnythingSmallF16.mlpackage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -48,7 +49,8 @@
 		D8C894BC2BEA8F5E0043DB71 /* MainCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCommand.swift; sourceTree = "<group>"; };
 		D8C894D02BEAD0F50043DB71 /* CoreImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreImageExtensions.swift; sourceTree = "<group>"; };
 		D8C894D62BED20B00043DB71 /* DepthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepthView.swift; sourceTree = "<group>"; };
-		EB7744DD2C1A52BD009F5293 /* DepthAnythingSmallF16.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = DepthAnythingSmallF16.mlpackage; sourceTree = "<group>"; };
+		EB94266C2C1DAF1D0039A6B1 /* DepthAnythingV2SmallF16.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = DepthAnythingV2SmallF16.mlpackage; sourceTree = "<group>"; };
+		EB94266E2C1DB1280039A6B1 /* DepthAnythingSmallF16.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = DepthAnythingSmallF16.mlpackage; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,7 +135,8 @@
 		EB7744DE2C1A52BD009F5293 /* models */ = {
 			isa = PBXGroup;
 			children = (
-				EB7744DD2C1A52BD009F5293 /* DepthAnythingSmallF16.mlpackage */,
+				EB94266E2C1DB1280039A6B1 /* DepthAnythingSmallF16.mlpackage */,
+				EB94266C2C1DAF1D0039A6B1 /* DepthAnythingV2SmallF16.mlpackage */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -240,11 +243,12 @@
 				D8C894812BE931A20043DB71 /* DepthApp.swift in Sources */,
 				D8C894B12BE93E840043DB71 /* DataModel.swift in Sources */,
 				D8C894D72BED20B00043DB71 /* DepthView.swift in Sources */,
+				EB94266D2C1DAF1D0039A6B1 /* DepthAnythingV2SmallF16.mlpackage in Sources */,
 				D8C894AD2BE934DD0043DB71 /* Camera.swift in Sources */,
 				D8C894B32BE942A50043DB71 /* ViewfinderView.swift in Sources */,
 				D8C894D12BEAD1230043DB71 /* CoreImageExtensions.swift in Sources */,
+				EB94266F2C1DB1280039A6B1 /* DepthAnythingSmallF16.mlpackage in Sources */,
 				D8C894AF2BE93E1C0043DB71 /* CameraView.swift in Sources */,
-				EB7744DF2C1A52BD009F5293 /* DepthAnythingSmallF16.mlpackage in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,7 +387,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DepthApp/Preview Content\"";
-				DEVELOPMENT_TEAM = U2AVBSL4ZQ;
+				DEVELOPMENT_TEAM = ZWDJQ796RU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Capture photos for depth estimation";
@@ -401,7 +405,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.fleetwood.createml.DepthApp;
+				PRODUCT_BUNDLE_IDENTIFIER = net.pcuenca.createml.DepthApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -421,7 +425,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DepthApp/Preview Content\"";
-				DEVELOPMENT_TEAM = U2AVBSL4ZQ;
+				DEVELOPMENT_TEAM = ZWDJQ796RU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Capture photos for depth estimation";
@@ -439,7 +443,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.fleetwood.createml.DepthApp;
+				PRODUCT_BUNDLE_IDENTIFIER = net.pcuenca.createml.DepthApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

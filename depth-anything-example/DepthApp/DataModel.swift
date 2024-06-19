@@ -10,7 +10,7 @@ final class DataModel: ObservableObject {
     let context = CIContext()
 
     /// The depth model.
-    var model: DepthAnythingSmallF16?
+    var model: DepthAnythingV2SmallF16?
 
     /// A pixel buffer used as input to the model.
     let inputPixelBuffer: CVPixelBuffer
@@ -87,7 +87,7 @@ final class DataModel: ObservableObject {
         let clock = ContinuousClock()
         let start = clock.now
 
-        model = try DepthAnythingSmallF16()
+        model = try DepthAnythingV2SmallF16()
 
         let duration = clock.now - start
         print("Model loaded (took \(duration.formatted(.units(allowed: [.seconds, .milliseconds]))))")
