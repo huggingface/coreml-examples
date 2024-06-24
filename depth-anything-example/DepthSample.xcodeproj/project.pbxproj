@@ -20,7 +20,6 @@
 		D8C894D22BEAD1230043DB71 /* CoreImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C894D02BEAD0F50043DB71 /* CoreImageExtensions.swift */; };
 		D8C894D72BED20B00043DB71 /* DepthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C894D62BED20B00043DB71 /* DepthView.swift */; };
 		EB94266D2C1DAF1D0039A6B1 /* DepthAnythingV2SmallF16.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = EB94266C2C1DAF1D0039A6B1 /* DepthAnythingV2SmallF16.mlpackage */; };
-		EB94266F2C1DB1280039A6B1 /* DepthAnythingSmallF16.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = EB94266E2C1DB1280039A6B1 /* DepthAnythingSmallF16.mlpackage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -50,7 +49,6 @@
 		D8C894D02BEAD0F50043DB71 /* CoreImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreImageExtensions.swift; sourceTree = "<group>"; };
 		D8C894D62BED20B00043DB71 /* DepthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepthView.swift; sourceTree = "<group>"; };
 		EB94266C2C1DAF1D0039A6B1 /* DepthAnythingV2SmallF16.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = DepthAnythingV2SmallF16.mlpackage; sourceTree = "<group>"; };
-		EB94266E2C1DB1280039A6B1 /* DepthAnythingSmallF16.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = DepthAnythingSmallF16.mlpackage; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,7 +133,6 @@
 		EB7744DE2C1A52BD009F5293 /* models */ = {
 			isa = PBXGroup;
 			children = (
-				EB94266E2C1DB1280039A6B1 /* DepthAnythingSmallF16.mlpackage */,
 				EB94266C2C1DAF1D0039A6B1 /* DepthAnythingV2SmallF16.mlpackage */,
 			);
 			path = models;
@@ -247,7 +244,6 @@
 				D8C894AD2BE934DD0043DB71 /* Camera.swift in Sources */,
 				D8C894B32BE942A50043DB71 /* ViewfinderView.swift in Sources */,
 				D8C894D12BEAD1230043DB71 /* CoreImageExtensions.swift in Sources */,
-				EB94266F2C1DB1280039A6B1 /* DepthAnythingSmallF16.mlpackage in Sources */,
 				D8C894AF2BE93E1C0043DB71 /* CameraView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
