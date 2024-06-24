@@ -3,7 +3,7 @@ import CoreML
 import SwiftUI
 import os
 
-fileprivate let targetSize = CGSize(width: 518, height: 396)
+fileprivate let targetSize = CGSize(width: 518, height: 392)
 
 final class DataModel: ObservableObject {
     let camera = Camera()
