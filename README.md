@@ -1,6 +1,8 @@
 # CoreML Examples
 
-This repository contains a collection of CoreML demo apps, with optimized models for the Apple Neural Engine™️.
+This repository contains a collection of CoreML demo apps, with optimized models for the Apple Neural Engine™️. It also hosts tutorials and other resources you can use in your own projects.
+
+## Demo Apps
 
 ||||
 | ------------- | ------------- |  ------------- |
@@ -16,6 +18,12 @@ The models showcased include:
 
 
 We leverage [coremltools](https://github.com/apple/coremltools) for testing and implementing these optimisations. You can read more about it [here](https://apple.github.io/coremltools/docs-guides/source/opt-palettization-api.html).
+
+## Tutorials
+
+- How to convert Depth Anything v2 for GPU and Neural Engine. [Source code notebook](https://github.com/huggingface/coreml-examples/tutorials/depth-anything-coreml-guide.ipynb) <a target="_blank" href="https://colab.research.google.com/github/huggingface/coreml-examples/tutorials/depth-anything-coreml-guide.ipynb">
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+</a>
 
 
 
