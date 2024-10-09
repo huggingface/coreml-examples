@@ -1,0 +1,3 @@
+[submodule "CLIP-Finder"]
+	path = CLIP-Finder
+	url = https://github.com/fguzman82/CLIP-Finder2.git
