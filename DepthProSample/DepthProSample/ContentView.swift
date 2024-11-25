@@ -36,11 +36,13 @@ struct ContentView: View {
             })
             
             Button("Process Image") {
-                do {
-                    try processImage();
-                }  catch {
-                    print(error)
-                }
+                    Task.detached(priority: .userInitiated) {
+                        do {
+                            try await processImage();
+                        }  catch {
+                            print(error)
+                        }
+                    }
             }
             .disabled(selectedImage == nil)
 //            
