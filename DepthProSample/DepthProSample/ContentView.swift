@@ -36,23 +36,19 @@ struct ContentView: View {
           case .success(let fileurls):
             if fileurls.count > 0 {
               loadImage(inputURL: fileurls.first!)
+                Task.detached(priority: .userInitiated) {
+                  do {
+                    try await processImage()
+                  } catch {
+                    print(error)
+                  }
+                }
             }
 
           case .failure(let error):
             print(error)
           }
         })
-
-      Button("Process Image") {
-        Task.detached(priority: .userInitiated) {
-          do {
-            try await processImage()
-          } catch {
-            print(error)
-          }
-        }
-      }
-      .disabled(selectedImage == nil)
 
       processedImage?
         .resizable()
