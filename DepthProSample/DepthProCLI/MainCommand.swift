@@ -62,70 +62,7 @@ func analyzePixelBuffer(_ pixelBuffer: CVPixelBuffer) -> (min: Float, max: Float
     return (min, max, mean, median)
 }
 
-//func printPixelFormatTypes() {
-//    let pixelFormats: [(String, OSType)] = [
-//        ("kCVPixelFormatType_1Monochrome", kCVPixelFormatType_1Monochrome),
-//        ("kCVPixelFormatType_2Indexed", kCVPixelFormatType_2Indexed),
-//        ("kCVPixelFormatType_4Indexed", kCVPixelFormatType_4Indexed),
-//        ("kCVPixelFormatType_8Indexed", kCVPixelFormatType_8Indexed),
-//        ("kCVPixelFormatType_1IndexedGray_WhiteIsZero", kCVPixelFormatType_1IndexedGray_WhiteIsZero),
-//        ("kCVPixelFormatType_2IndexedGray_WhiteIsZero", kCVPixelFormatType_2IndexedGray_WhiteIsZero),
-//        ("kCVPixelFormatType_4IndexedGray_WhiteIsZero", kCVPixelFormatType_4IndexedGray_WhiteIsZero),
-//        ("kCVPixelFormatType_8IndexedGray_WhiteIsZero", kCVPixelFormatType_8IndexedGray_WhiteIsZero),
-//        ("kCVPixelFormatType_16BE555", kCVPixelFormatType_16BE555),
-//        ("kCVPixelFormatType_16LE555", kCVPixelFormatType_16LE555),
-//        ("kCVPixelFormatType_16LE5551", kCVPixelFormatType_16LE5551),
-//        ("kCVPixelFormatType_16BE565", kCVPixelFormatType_16BE565),
-//        ("kCVPixelFormatType_16LE565", kCVPixelFormatType_16LE565),
-//        ("kCVPixelFormatType_24RGB", kCVPixelFormatType_24RGB),
-//        ("kCVPixelFormatType_24BGR", kCVPixelFormatType_24BGR),
-//        ("kCVPixelFormatType_32ARGB", kCVPixelFormatType_32ARGB),
-//        ("kCVPixelFormatType_32BGRA", kCVPixelFormatType_32BGRA),
-//        ("kCVPixelFormatType_32ABGR", kCVPixelFormatType_32ABGR),
-//        ("kCVPixelFormatType_32RGBA", kCVPixelFormatType_32RGBA),
-//        ("kCVPixelFormatType_64ARGB", kCVPixelFormatType_64ARGB),
-//        ("kCVPixelFormatType_48RGB", kCVPixelFormatType_48RGB),
-//        ("kCVPixelFormatType_32AlphaGray", kCVPixelFormatType_32AlphaGray),
-//        ("kCVPixelFormatType_16Gray", kCVPixelFormatType_16Gray),
-//        ("kCVPixelFormatType_30RGB", kCVPixelFormatType_30RGB),
-//        ("kCVPixelFormatType_422YpCbCr8", kCVPixelFormatType_422YpCbCr8),
-//        ("kCVPixelFormatType_4444YpCbCrA8", kCVPixelFormatType_4444YpCbCrA8),
-//        ("kCVPixelFormatType_4444YpCbCrA8R", kCVPixelFormatType_4444YpCbCrA8R),
-//        ("kCVPixelFormatType_4444AYpCbCr8", kCVPixelFormatType_4444AYpCbCr8),
-//        ("kCVPixelFormatType_4444AYpCbCr16", kCVPixelFormatType_4444AYpCbCr16),
-//        ("kCVPixelFormatType_444YpCbCr8", kCVPixelFormatType_444YpCbCr8),
-//        ("kCVPixelFormatType_422YpCbCr16", kCVPixelFormatType_422YpCbCr16),
-//        ("kCVPixelFormatType_422YpCbCr10", kCVPixelFormatType_422YpCbCr10),
-//        ("kCVPixelFormatType_444YpCbCr10", kCVPixelFormatType_444YpCbCr10),
-//        ("kCVPixelFormatType_420YpCbCr8Planar", kCVPixelFormatType_420YpCbCr8Planar),
-//        ("kCVPixelFormatType_420YpCbCr8PlanarFullRange", kCVPixelFormatType_420YpCbCr8PlanarFullRange),
-//        ("kCVPixelFormatType_422YpCbCr_4A_8BiPlanar", kCVPixelFormatType_422YpCbCr_4A_8BiPlanar),
-//        ("kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange", kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange),
-//        ("kCVPixelFormatType_420YpCbCr8BiPlanarFullRange", kCVPixelFormatType_420YpCbCr8BiPlanarFullRange),
-//        ("kCVPixelFormatType_422YpCbCr8_yuvs", kCVPixelFormatType_422YpCbCr8_yuvs),
-//        ("kCVPixelFormatType_422YpCbCr8FullRange", kCVPixelFormatType_422YpCbCr8FullRange),
-//        ("kCVPixelFormatType_OneComponent8", kCVPixelFormatType_OneComponent8),
-//        ("kCVPixelFormatType_TwoComponent8", kCVPixelFormatType_TwoComponent8),
-//        ("kCVPixelFormatType_OneComponent16Half", kCVPixelFormatType_OneComponent16Half),
-//        ("kCVPixelFormatType_OneComponent32Float", kCVPixelFormatType_OneComponent32Float),
-//        ("kCVPixelFormatType_TwoComponent16Half", kCVPixelFormatType_TwoComponent16Half),
-//        ("kCVPixelFormatType_TwoComponent32Float", kCVPixelFormatType_TwoComponent32Float),
-//        ("kCVPixelFormatType_64RGBAHalf", kCVPixelFormatType_64RGBAHalf),
-//        ("kCVPixelFormatType_128RGBAFloat", kCVPixelFormatType_128RGBAFloat)
-//    ]
-//
-//    for (name, pixelFormat) in pixelFormats {
-//        let fourCC = String(format: "%c%c%c%c",
-//                            (pixelFormat >> 24) & 0xFF,
-//                            (pixelFormat >> 16) & 0xFF,
-//                            (pixelFormat >> 8) & 0xFF,
-//                            pixelFormat & 0xFF)
-//        print("\(name): \(pixelFormat) (FourCC: \(fourCC))")
-//    }
-//}
-
-
-func normalizePixelBuffer(_ pixelBuffer: CVPixelBuffer) -> CVPixelBuffer? {
+func castPixelBuffer(_ pixelBuffer: CVPixelBuffer) -> CVPixelBuffer? {
     let width = CVPixelBufferGetWidth(pixelBuffer)
     let height = CVPixelBufferGetHeight(pixelBuffer)
     let pixelFormat = CVPixelBufferGetPixelFormatType(pixelBuffer)
@@ -135,7 +72,6 @@ func normalizePixelBuffer(_ pixelBuffer: CVPixelBuffer) -> CVPixelBuffer? {
         return nil
     }
     
-    // Create a new pixel buffer for the output
     var normalizedPixelBuffer: CVPixelBuffer?
     let attributes: [CFString: Any] = [
         kCVPixelBufferWidthKey: width,
@@ -151,7 +87,6 @@ func normalizePixelBuffer(_ pixelBuffer: CVPixelBuffer) -> CVPixelBuffer? {
         return nil
     }
     
-    // Lock the input and output buffers
     CVPixelBufferLockBaseAddress(pixelBuffer, .readOnly)
     CVPixelBufferLockBaseAddress(outputBuffer, [])
     defer {
@@ -172,8 +107,58 @@ func normalizePixelBuffer(_ pixelBuffer: CVPixelBuffer) -> CVPixelBuffer? {
 
     for i in 0..<pixelCount {
         let halfValue = inputPointer[i]
-        let floatValue = Float(halfToFloat(halfValue)) / 255.0
+        let floatValue = Float(halfToFloat(halfValue))
         outputPointer[i] = floatValue
+    }
+    
+    return outputBuffer
+}
+
+func normalizePixelBuffer(_ pixelBuffer: CVPixelBuffer) -> CVPixelBuffer? {
+    let width = CVPixelBufferGetWidth(pixelBuffer)
+    let height = CVPixelBufferGetHeight(pixelBuffer)
+    let pixelFormat = CVPixelBufferGetPixelFormatType(pixelBuffer)
+    
+    guard pixelFormat == kCVPixelFormatType_OneComponent32Float else {
+        print("Unsupported pixel format. This function requires a 32-bit half-precision pixel buffer.")
+        return nil
+    }
+    
+    var normalizedPixelBuffer: CVPixelBuffer?
+    let attributes: [CFString: Any] = [
+        kCVPixelBufferWidthKey: width,
+        kCVPixelBufferHeightKey: height,
+        kCVPixelBufferPixelFormatTypeKey: kCVPixelFormatType_OneComponent32Float,
+        kCVPixelBufferIOSurfacePropertiesKey: [:]
+    ]
+    
+    CVPixelBufferCreate(kCFAllocatorDefault, width, height, kCVPixelFormatType_OneComponent32Float, attributes as CFDictionary, &normalizedPixelBuffer)
+    
+    guard let outputBuffer = normalizedPixelBuffer else {
+        print("Failed to create output pixel buffer.")
+        return nil
+    }
+    
+    CVPixelBufferLockBaseAddress(pixelBuffer, .readOnly)
+    CVPixelBufferLockBaseAddress(outputBuffer, [])
+    defer {
+        CVPixelBufferUnlockBaseAddress(pixelBuffer, .readOnly)
+        CVPixelBufferUnlockBaseAddress(outputBuffer, [])
+    }
+    
+    guard let inputBaseAddress = CVPixelBufferGetBaseAddress(pixelBuffer),
+          let outputBaseAddress = CVPixelBufferGetBaseAddress(outputBuffer) else {
+        print("Failed to get the base address of the pixel buffer.")
+        return nil
+    }
+    
+    let inputPointer = inputBaseAddress.bindMemory(to: Float.self, capacity: width * height)
+    let outputPointer = outputBaseAddress.bindMemory(to: Float.self, capacity: width * height)
+    
+    let pixelCount = width * height
+
+    for i in 0..<pixelCount {
+        outputPointer[i] = inputPointer[i] / 255.0
     }
     
     return outputBuffer
@@ -202,7 +187,6 @@ func halfToFloat(_ half: UInt16) -> Float {
         }
     }
 
-    // Normalized number
     let floatExponent = Float(Int(exponent) - 15)
     let floatValue = (1.0 + Float(fraction) / 1024.0) * pow(2.0, floatExponent)
     
@@ -251,10 +235,6 @@ struct MainCommand: AsyncParsableCommand {
             print("Failed to create a pixel buffer.")
             throw ExitCode(EXIT_FAILURE)
         }
-        
-        // Sanity Check initial image
-        // var outputImage = CIImage(cvPixelBuffer: pixelBuffer)
-        // context.writePNG(outputImage, to: URL(filePath: output))
 
         // Execute the model
         let clock = ContinuousClock()
@@ -268,28 +248,11 @@ struct MainCommand: AsyncParsableCommand {
         let duration = clock.now - start
         print("Model inference took \(duration.formatted(.units(allowed: [.seconds, .milliseconds])))")
         
-        var stats = analyzePixelBuffer(outputPixelBuffer)
-        print("Depth Statistics: Min=\(stats.min), Max=\(stats.max), Mean=\(stats.mean), Median=\(stats.median)")
+        let castedBuffer = castPixelBuffer(outputPixelBuffer)!
+        let normalizedBuffer = normalizePixelBuffer(castedBuffer)!
         
-        let new_pb = normalizePixelBuffer(outputPixelBuffer)!
-        
-        stats = analyzePixelBuffer(new_pb)
-        print("Depth Statistics2: Min=\(stats.min), Max=\(stats.max), Mean=\(stats.mean), Median=\(stats.median)")
-        
-        var outputImage = CIImage(cvPixelBuffer: new_pb)
+        var outputImage = CIImage(cvPixelBuffer: normalizedBuffer)
         outputImage = outputImage.resized(to: CGSize(width: inputImage.extent.width, height: inputImage.extent.height))
         context.writePNG(outputImage, to: URL(filePath: output))
-//
-//        guard let output8BitPixelBuffer = convertTo8BitPixelBuffer(from: outputPixelBuffer) else {
-//            print("Failed to convert pixel buffer to 8-bit.")
-//            throw ExitCode(EXIT_FAILURE)
-//        }
-//
-//        // Undo the scale to match the original image size
-//        var outputImage = CIImage(cvPixelBuffer: output8BitPixelBuffer)
-////        outputImage = outputImage.resized(to: CGSize(width: inputImage.extent.width, height: inputImage.extent.height))
-//
-//        // Save the depth image
-//        context.writePNG(outputImage, to: URL(filePath: output))
     }
 }
