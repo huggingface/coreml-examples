@@ -10,6 +10,7 @@
 		2A337CA42CEFF09800A35407 /* MainCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A337CA32CEFF09800A35407 /* MainCommand.swift */; };
 		2A337CA72CEFF0B500A35407 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 2A337CA62CEFF0B500A35407 /* ArgumentParser */; };
 		2A337CAA2CEFF4AB00A35407 /* CoreImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A337CA92CEFF4A400A35407 /* CoreImageExtensions.swift */; };
+		2AD1B6DB2CF4FB3100FC0E5B /* OutputBufferConversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD1B6DA2CF4FB2600FC0E5B /* OutputBufferConversions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +29,7 @@
 		2A337C952CEFEFFD00A35407 /* DepthProCLI */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DepthProCLI; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A337CA32CEFF09800A35407 /* MainCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCommand.swift; sourceTree = "<group>"; };
 		2A337CA92CEFF4A400A35407 /* CoreImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreImageExtensions.swift; sourceTree = "<group>"; };
+		2AD1B6DA2CF4FB2600FC0E5B /* OutputBufferConversions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputBufferConversions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 		2A337CA82CEFF44100A35407 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				2AD1B6DA2CF4FB2600FC0E5B /* OutputBufferConversions.swift */,
 				2A337CA92CEFF4A400A35407 /* CoreImageExtensions.swift */,
 			);
 			path = Common;
@@ -141,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A337CAA2CEFF4AB00A35407 /* CoreImageExtensions.swift in Sources */,
+				2AD1B6DB2CF4FB3100FC0E5B /* OutputBufferConversions.swift in Sources */,
 				2A337CA42CEFF09800A35407 /* MainCommand.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
