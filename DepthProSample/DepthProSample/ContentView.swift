@@ -1,6 +1,8 @@
 import SwiftUI
+import UniformTypeIdentifiers
 import CoreML
 import Vision
+import CoreImage
 
 let targetSize = CGSize(width: 1536, height: 1536)
 let context = CIContext()
@@ -10,7 +12,9 @@ struct ContentView: View {
     @State private var originalSize: CGSize?
     @State private var selectedImage: Image?
     @State private var processedImage: Image?
+    @State private var processedCGImage: CGImage?
     @State private var isImagePickerPresented = false
+    @State private var isImageExporterPresented = false
     
     var body: some View {
         VStack {
@@ -45,18 +49,26 @@ struct ContentView: View {
                     }
             }
             .disabled(selectedImage == nil)
-//            
+
             processedImage?
                 .resizable()
                 .scaledToFit()
                 .frame(height: 200)
                 .cornerRadius(10)
-//            
-//            if processedImage != nil {
-//                Button("Save Image") {
-//                    // Save implementation
-//                }
-//            }
+
+            if processedImage != nil {
+                Button("Save Image") {
+                    isImageExporterPresented = true
+                }
+                .fileExporter(isPresented: $isImageExporterPresented, document: ImageDocument(image: processedCGImage!), contentType: .png, onCompletion: { (result) in
+                    if case .success = result {
+                        print("Success")
+                    } else {
+                        print("Failure")
+                    }
+                })
+                .disabled(processedImage == nil)
+            }
         }
         .padding()
     }
@@ -83,7 +95,6 @@ struct ContentView: View {
     }
     
     func processImage() throws{
-        guard let image = selectedImage else { return }
         guard let pb = pixelBuffer else { return }
         
         let model = try DepthProNIDPrunedQuantized()
@@ -102,40 +113,38 @@ struct ContentView: View {
         var outputImage = CIImage(cvPixelBuffer: normalizedBuffer)
         outputImage = outputImage.resized(
             to: CGSize(width: originalSize!.width, height: originalSize!.height))
-        processedImage = Image(decorative: context.createCGImage(outputImage, from: outputImage.extent)!, scale: 1.0, orientation: .up)
-    }
-    
-    func saveImage() {
-//        guard let image = processedImage else { return }
-//        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+        
+        self.processedCGImage = context.createCGImage(outputImage, from: outputImage.extent)!
+        self.processedImage = Image(decorative: self.processedCGImage!, scale: 1.0, orientation: .up)
     }
 }
 
-struct ImagePicker: View {
-    @Binding var selectedImage: Image?
-    @State private var imageData: Data?
-    @Environment(\.dismiss) private var dismiss
+struct ImageDocument: FileDocument {
+    static var readableContentTypes: [UTType] = [.png]
     
-    var body: some View {
-        VStack {
-            List {
-                Button("Photo Library") {
-                    selectImageFromLibrary()
-                }
-                Button("Camera") {
-                    selectImageFromCamera()
-                }
-            }
+    var image: CGImage
+
+    init(image: CGImage) {
+        self.image = image
+    }
+
+    init(configuration: ReadConfiguration) throws {
+        throw CocoaError(.fileReadCorruptFile)
+    }
+
+    func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
+        guard let colorSpace = CGColorSpace(name: CGColorSpace.sRGB)
+               else {
+            fatalError("Failed to create color space or CIImage.")
         }
+        
+        let ciImage = CIImage(cgImage: image)
+        
+        guard let pngData = context.pngRepresentation(of: ciImage, format: .ABGR8, colorSpace: colorSpace) else {
+            fatalError("Failed to generate PNG representation.")
+        }
+
+        return FileWrapper(regularFileWithContents: pngData)
     }
     
-    private func selectImageFromLibrary() {
-        // Library image selection logic
-        dismiss()
-    }
-    
-    private func selectImageFromCamera() {
-        // Camera image capture logic
-        dismiss()
-    }
 }
