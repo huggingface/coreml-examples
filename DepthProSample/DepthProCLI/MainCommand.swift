@@ -1,67 +1,9 @@
-import Accelerate  // For efficient calculations
+import Accelerate
 import ArgumentParser
 import CoreImage
 import CoreML
 import ImageIO
 import UniformTypeIdentifiers
-
-func analyzePixelBuffer(_ pixelBuffer: CVPixelBuffer) -> (
-  min: Float, max: Float, mean: Float, median: Float
-) {
-  CVPixelBufferLockBaseAddress(pixelBuffer, .readOnly)
-  defer { CVPixelBufferUnlockBaseAddress(pixelBuffer, .readOnly) }
-
-  guard let baseAddress = CVPixelBufferGetBaseAddress(pixelBuffer) else {
-    fatalError("Failed to get base address of pixel buffer.")
-  }
-
-  let width = CVPixelBufferGetWidth(pixelBuffer)
-  let height = CVPixelBufferGetHeight(pixelBuffer)
-  let pixelFormat = CVPixelBufferGetPixelFormatType(pixelBuffer)
-
-  guard
-    pixelFormat == kCVPixelFormatType_OneComponent16Half
-      || pixelFormat == kCVPixelFormatType_OneComponent32Float
-  else {
-    fatalError("Unsupported pixel format. Only 16-bit half-float or 32-bit float is supported.")
-  }
-
-  let count = width * height
-  var values: [Float] = []
-
-  if pixelFormat == kCVPixelFormatType_OneComponent32Float {
-    let data = baseAddress.bindMemory(to: Float.self, capacity: count)
-    values = Array(UnsafeBufferPointer(start: data, count: count))
-  } else if pixelFormat == kCVPixelFormatType_OneComponent16Half {
-    let data = baseAddress.bindMemory(to: UInt16.self, capacity: count)
-
-    var sourceBuffer = vImage_Buffer(
-      data: UnsafeMutableRawPointer(mutating: data),
-      height: vImagePixelCount(height),
-      width: vImagePixelCount(width),
-      rowBytes: CVPixelBufferGetBytesPerRow(pixelBuffer)
-    )
-
-    var floatValues = [Float](repeating: 0, count: count)
-    var destinationBuffer = vImage_Buffer(
-      data: &floatValues,
-      height: vImagePixelCount(height),
-      width: vImagePixelCount(width),
-      rowBytes: width * MemoryLayout<Float>.size
-    )
-
-    vImageConvert_Planar16FtoPlanarF(
-      &sourceBuffer, &destinationBuffer, vImage_Flags(kvImageNoFlags))
-    values = floatValues
-  }
-
-  let min = values.min() ?? 0
-  let max = values.max() ?? 0
-  let mean = values.reduce(0, +) / Float(count)
-  let median = values.sorted()[count / 2]
-
-  return (min, max, mean, median)
-}
 
 func castPixelBuffer(_ pixelBuffer: CVPixelBuffer) -> CVPixelBuffer? {
   let width = CVPixelBufferGetWidth(pixelBuffer)
