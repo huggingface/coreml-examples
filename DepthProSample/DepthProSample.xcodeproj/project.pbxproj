@@ -11,6 +11,8 @@
 		2A337CA72CEFF0B500A35407 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 2A337CA62CEFF0B500A35407 /* ArgumentParser */; };
 		2A337CAA2CEFF4AB00A35407 /* CoreImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A337CA92CEFF4A400A35407 /* CoreImageExtensions.swift */; };
 		2AD1B6DB2CF4FB3100FC0E5B /* OutputBufferConversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD1B6DA2CF4FB2600FC0E5B /* OutputBufferConversions.swift */; };
+		2AD1B70B2CF5177700FC0E5B /* OutputBufferConversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD1B6DA2CF4FB2600FC0E5B /* OutputBufferConversions.swift */; };
+		2AD1B70C2CF5177C00FC0E5B /* CoreImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A337CA92CEFF4A400A35407 /* CoreImageExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -30,7 +32,16 @@
 		2A337CA32CEFF09800A35407 /* MainCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCommand.swift; sourceTree = "<group>"; };
 		2A337CA92CEFF4A400A35407 /* CoreImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreImageExtensions.swift; sourceTree = "<group>"; };
 		2AD1B6DA2CF4FB2600FC0E5B /* OutputBufferConversions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputBufferConversions.swift; sourceTree = "<group>"; };
+		2AD1B6E02CF4FC7800FC0E5B /* DepthProSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DepthProSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		2AD1B6E12CF4FC7800FC0E5B /* DepthProSample */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = DepthProSample;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		2A337C922CEFEFFD00A35407 /* Frameworks */ = {
@@ -38,6 +49,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A337CA72CEFF0B500A35407 /* ArgumentParser in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2AD1B6DD2CF4FC7800FC0E5B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -49,6 +67,7 @@
 			children = (
 				2A337CA82CEFF44100A35407 /* Common */,
 				2A337C9F2CEFF04E00A35407 /* DepthProCLI */,
+				2AD1B6E12CF4FC7800FC0E5B /* DepthProSample */,
 				2A337C962CEFEFFD00A35407 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -57,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				2A337C952CEFEFFD00A35407 /* DepthProCLI */,
+				2AD1B6E02CF4FC7800FC0E5B /* DepthProSample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -101,6 +121,28 @@
 			productReference = 2A337C952CEFEFFD00A35407 /* DepthProCLI */;
 			productType = "com.apple.product-type.tool";
 		};
+		2AD1B6DF2CF4FC7800FC0E5B /* DepthProSample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2AD1B7022CF4FC7A00FC0E5B /* Build configuration list for PBXNativeTarget "DepthProSample" */;
+			buildPhases = (
+				2AD1B6DC2CF4FC7800FC0E5B /* Sources */,
+				2AD1B6DD2CF4FC7800FC0E5B /* Frameworks */,
+				2AD1B6DE2CF4FC7800FC0E5B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				2AD1B6E12CF4FC7800FC0E5B /* DepthProSample */,
+			);
+			name = DepthProSample;
+			packageProductDependencies = (
+			);
+			productName = DepthProSample;
+			productReference = 2AD1B6E02CF4FC7800FC0E5B /* DepthProSample.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -112,6 +154,9 @@
 				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					2A337C942CEFEFFD00A35407 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					2AD1B6DF2CF4FC7800FC0E5B = {
 						CreatedOnToolsVersion = 16.0;
 					};
 				};
@@ -134,9 +179,20 @@
 			projectRoot = "";
 			targets = (
 				2A337C942CEFEFFD00A35407 /* DepthProCLI */,
+				2AD1B6DF2CF4FC7800FC0E5B /* DepthProSample */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2AD1B6DE2CF4FC7800FC0E5B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2A337C912CEFEFFD00A35407 /* Sources */ = {
@@ -146,6 +202,15 @@
 				2A337CAA2CEFF4AB00A35407 /* CoreImageExtensions.swift in Sources */,
 				2AD1B6DB2CF4FB3100FC0E5B /* OutputBufferConversions.swift in Sources */,
 				2A337CA42CEFF09800A35407 /* MainCommand.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2AD1B6DC2CF4FC7800FC0E5B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2AD1B70C2CF5177C00FC0E5B /* CoreImageExtensions.swift in Sources */,
+				2AD1B70B2CF5177700FC0E5B /* OutputBufferConversions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,6 +355,80 @@
 			};
 			name = Release;
 		};
+		2AD1B7032CF4FC7A00FC0E5B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = DepthProSample/DepthProSample.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"DepthProSample/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = co.huggingface.DepthProSample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = macosx;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				XROS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		2AD1B7042CF4FC7A00FC0E5B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = DepthProSample/DepthProSample.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"DepthProSample/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = co.huggingface.DepthProSample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = macosx;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				XROS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -307,6 +446,15 @@
 			buildConfigurations = (
 				2A337C9D2CEFEFFD00A35407 /* Debug */,
 				2A337C9E2CEFEFFD00A35407 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2AD1B7022CF4FC7A00FC0E5B /* Build configuration list for PBXNativeTarget "DepthProSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2AD1B7032CF4FC7A00FC0E5B /* Debug */,
+				2AD1B7042CF4FC7A00FC0E5B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
