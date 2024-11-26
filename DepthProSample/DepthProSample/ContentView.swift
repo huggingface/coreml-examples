@@ -15,21 +15,26 @@ struct ContentView: View {
     @State private var processedCGImage: CGImage?
     @State private var isImagePickerPresented = false
     @State private var isImageExporterPresented = false
+    @State private var isProcessing = false
 
     var body: some View {
         HStack {
             VStack {
-                if let image = selectedImage {
-                    image
-                        .resizable()
-                        .scaledToFit()
-                        .cornerRadius(10)
-                } else {
-                    Image(systemName: "photo")
-                        .resizable()
-                        .scaledToFit()
-                        .foregroundColor(.gray)
-                        .cornerRadius(10)
+                GeometryReader { geometry in
+                    if let image = selectedImage {
+                        image
+                            .resizable()
+                            .scaledToFit()
+                            .cornerRadius(10)
+                            .frame(width: geometry.size.width, height: geometry.size.height)
+                    } else {
+                        Image(systemName: "photo")
+                            .resizable()
+                            .scaledToFit()
+                            .foregroundColor(.gray)
+                            .cornerRadius(10)
+                            .frame(width: geometry.size.width, height: geometry.size.height)
+                    }
                 }
 
                 Button("Select Image") {
@@ -43,6 +48,7 @@ struct ContentView: View {
                         switch results {
                         case .success(let fileurls):
                             if fileurls.count > 0 {
+                                isProcessing = true
                                 loadImage(inputURL: fileurls.first!)
                                 Task.detached(priority: .userInitiated) {
                                     do {
@@ -57,20 +63,32 @@ struct ContentView: View {
                             print(error)
                         }
                     })
+                .disabled(isProcessing)
             }
             VStack {
-                if let image = processedImage {
-                    image
-                        .resizable()
-                        .scaledToFit()
-                        .cornerRadius(10)
-                } else {
-                    Image(systemName: "photo")
-                        .resizable()
-                        .scaledToFit()
-                        .foregroundColor(.gray)
-                        .cornerRadius(10)
+                GeometryReader { geometry in
+                    if isProcessing {
+                        ProgressView("Processing...")
+                            .cornerRadius(10)
+                            .foregroundColor(.gray)
+                            .shadow(radius: 10)
+                            .frame(width: geometry.size.width, height: geometry.size.height)
+                    } else if let image = processedImage {
+                        image
+                            .resizable()
+                            .scaledToFit()
+                            .cornerRadius(10)
+                            .frame(width: geometry.size.width, height: geometry.size.height)
+                    } else {
+                        Image(systemName: "photo")
+                            .resizable()
+                            .scaledToFit()
+                            .cornerRadius(10)
+                            .frame(width: geometry.size.width, height: geometry.size.height)
+                            .foregroundColor(.gray)
+                    }
                 }
+                
                 if processedImage == nil {
                     Button("Save Image") {
                         isImageExporterPresented = true
@@ -85,13 +103,12 @@ struct ContentView: View {
                         document: ImageDocument(image: processedCGImage!),
                         contentType: .png,
                         onCompletion: { (result) in
-                            if case .success = result {
-                                print("Export Success")
-                            } else {
+                            if case .failure = result {
                                 print("Export Failure")
                             }
                         }
                     )
+                    .disabled(isProcessing)
                 }
             }
         }
@@ -144,6 +161,8 @@ struct ContentView: View {
 
         self.processedCGImage = context.createCGImage(outputImage, from: outputImage.extent)!
         self.processedImage = Image(decorative: self.processedCGImage!, scale: 1.0, orientation: .up)
+        
+        isProcessing = false
     }
 }
 
