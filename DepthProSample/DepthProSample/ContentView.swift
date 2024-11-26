@@ -17,64 +17,85 @@ struct ContentView: View {
   @State private var isImageExporterPresented = false
 
   var body: some View {
-    VStack {
-      selectedImage?
-        .resizable()
-        .scaledToFit()
-        .frame(height: 200)
-        .cornerRadius(10)
-
-      Button("Select Image") {
-        isImagePickerPresented = true
-      }
-      .fileImporter(
-        isPresented: $isImagePickerPresented, allowedContentTypes: [.png, .jpeg],
-        allowsMultipleSelection: false,
-        onCompletion: {
-          results in
-          switch results {
-          case .success(let fileurls):
-            if fileurls.count > 0 {
-              loadImage(inputURL: fileurls.first!)
-                Task.detached(priority: .userInitiated) {
-                  do {
-                    try await processImage()
-                  } catch {
-                    print(error)
+      HStack {
+          VStack {
+              if let image = selectedImage {
+                  image
+                      .resizable()
+                      .scaledToFit()
+                      .cornerRadius(10)
+              } else {
+                  Image(systemName: "photo")
+                      .resizable()
+                      .scaledToFit()
+                      .foregroundColor(.gray)
+                      .cornerRadius(10)
+              }
+                  
+              Button("Select Image") {
+                  isImagePickerPresented = true
+              }
+              .fileImporter(
+                isPresented: $isImagePickerPresented, allowedContentTypes: [.png, .jpeg],
+                allowsMultipleSelection: false,
+                onCompletion: {
+                    results in
+                    switch results {
+                    case .success(let fileurls):
+                        if fileurls.count > 0 {
+                            loadImage(inputURL: fileurls.first!)
+                            Task.detached(priority: .userInitiated) {
+                                do {
+                                    try await processImage()
+                                } catch {
+                                    print(error)
+                                }
+                            }
+                        }
+                        
+                    case .failure(let error):
+                        print(error)
+                    }
+                })
+          }
+          VStack {
+              if let image = processedImage {
+                  image
+                      .resizable()
+                      .scaledToFit()
+                      .cornerRadius(10)
+              } else {
+                  Image(systemName: "photo")
+                      .resizable()
+                      .scaledToFit()
+                      .foregroundColor(.gray)
+                      .cornerRadius(10)
+              }
+              if processedImage == nil {
+                  Button("Save Image") {
+                      isImageExporterPresented = true
                   }
-                }
-            }
-
-          case .failure(let error):
-            print(error)
+                  .disabled(true)
+              }
+              else {
+                  Button("Save Image") {
+                      isImageExporterPresented = true
+                  }
+                  .fileExporter(
+                    isPresented: $isImageExporterPresented, document: ImageDocument(image: processedCGImage!),
+                    contentType: .png,
+                    onCompletion: { (result) in
+                        if case .success = result {
+                            print("Export Success")
+                        } else {
+                            print("Export Failure")
+                        }
+                    }
+                  )
+              }
           }
-        })
-
-      processedImage?
-        .resizable()
-        .scaledToFit()
-        .frame(height: 200)
-        .cornerRadius(10)
-
-      if processedImage != nil {
-        Button("Save Image") {
-          isImageExporterPresented = true
-        }
-        .fileExporter(
-          isPresented: $isImageExporterPresented, document: ImageDocument(image: processedCGImage!),
-          contentType: .png,
-          onCompletion: { (result) in
-            if case .success = result {
-              print("Success")
-            } else {
-              print("Failure")
-            }
-          }
-        )
-        .disabled(processedImage == nil)
       }
-    }
-    .padding()
+      .padding()
   }
 
   func loadImage(inputURL: URL) {
@@ -100,12 +121,13 @@ struct ContentView: View {
     self.pixelBuffer = pixelBuffer
   }
 
-  func processImage() throws {
+    func processImage() async throws {
     guard let pb = pixelBuffer else { return }
 
     let model = try DepthProNIDPrunedQuantized()
-
-    let result = try model.prediction(pixel_values: pb)
+  let featureProvider = DepthProNIDPrunedQuantizedInput(pixel_values: pb)
+      
+      let result = try await model.prediction(input: featureProvider)
     guard
       let outputPixelBuffer = result.featureValue(for: "normalized_inverse_depth")?.imageBufferValue
     else {
