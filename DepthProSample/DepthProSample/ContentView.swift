@@ -17,7 +17,7 @@ struct ContentView: View {
     @State private var isImagePickerPresented = false
     @State private var isImageExporterPresented = false
     @State private var isProcessing = false
-	@State private var selectedOutput = "Normalized Inverse Depth"
+    @State private var selectedOutput = "Normalized Inverse Depth"
 
     var body: some View {
         HStack {
@@ -47,21 +47,21 @@ struct ContentView: View {
                         allowsMultipleSelection: false,
                         onCompletion: { results in
                             switch results {
-								case .success(let fileurls):
-									if fileurls.count > 0 {
-										isProcessing = true
-										loadImage(inputURL: fileurls.first!)
-										Task.detached(priority: .userInitiated) {
-											do {
-												try await processImage()
-											} catch {
-												print(error)
-											}
-										}
-									}
+                            case .success(let fileurls):
+                                if fileurls.count > 0 {
+                                    isProcessing = true
+                                    loadImage(inputURL: fileurls.first!)
+                                    Task.detached(priority: .userInitiated) {
+                                        do {
+                                            try await processImage()
+                                        } catch {
+                                            print(error)
+                                        }
+                                    }
+                                }
 
-								case .failure(let error):
-									print(error)
+                            case .failure(let error):
+                                print(error)
                             }
                         }
                     )
@@ -75,17 +75,17 @@ struct ContentView: View {
                     .pickerStyle(MenuPickerStyle())
                     .onChange(of: selectedOutput) {
                         if selectedImage != nil {
-							isProcessing = true
-							Task.detached(priority: .userInitiated) {
-								do {
-									try await processImage()
-								} catch {
-									print(error)
-								}
-							}
-						}
+                            isProcessing = true
+                            Task.detached(priority: .userInitiated) {
+                                do {
+                                    try await processImage()
+                                } catch {
+                                    print(error)
+                                }
+                            }
+                        }
                     }
-					.disabled(isProcessing)
+                    .disabled(isProcessing)
                 }
 
             }
@@ -165,21 +165,22 @@ struct ContentView: View {
     func processImage() async throws {
         guard pixelBuffer != nil else { return }
 
-		switch selectedOutput {
-			case "Normalized Inverse Depth":
-                try await processImageNID()
-			case "Meters":
-				try await processImageMeters()
-            case _:
-                print("output type not supported")
-                return
-		}
+        switch selectedOutput {
+        case "Normalized Inverse Depth":
+            try await processImageNID()
+        case "Meters":
+            try await processImageMeters()
+        case _:
+            print("output type not supported")
+            return
+        }
 
-		self.processedImage = Image(decorative: self.processedCGImage!, scale: 1.0, orientation: .up)
+        self.processedImage = Image(
+            decorative: self.processedCGImage!, scale: 1.0, orientation: .up)
         isProcessing = false
     }
 
-	private func processImageNID() async throws {
+    private func processImageNID() async throws {
         let model = try DepthProNIDPrunedQuantized()
         let featureProvider = DepthProNIDPrunedQuantizedInput(pixel_values: pixelBuffer!)
 
@@ -200,11 +201,14 @@ struct ContentView: View {
             to: CGSize(width: originalSize!.width, height: originalSize!.height))
 
         self.processedCGImage = context.createCGImage(outputImage, from: outputImage.extent)!
-	}
+    }
 
-	private func processImageMeters() async throws  {
+    private func processImageMeters() async throws {
         let model = try DepthProMetersPrunedQuantized()
-        let featureProvider = DepthProMetersPrunedQuantizedInput(pixel_values: pixelBuffer!, original_widths: MLShapedArray(repeating: Float16(originalSize!.width), shape: [1,1,1,1]))
+        let featureProvider = DepthProMetersPrunedQuantizedInput(
+            pixel_values: pixelBuffer!,
+            original_widths: MLShapedArray(
+                repeating: Float16(originalSize!.width), shape: [1, 1, 1, 1]))
 
         let result = try await model.prediction(input: featureProvider)
         guard
@@ -215,10 +219,11 @@ struct ContentView: View {
         }
 
         var outputImage = arrayToColoredMap(outputDepthMeters)!
-        outputImage = outputImage.resized(to: CGSize(width: originalSize!.width, height: originalSize!.height))!
+        outputImage = outputImage.resized(
+            to: CGSize(width: originalSize!.width, height: originalSize!.height))!
 
         self.processedCGImage = outputImage
-	}
+    }
 }
 
 struct ImageDocument: FileDocument {
