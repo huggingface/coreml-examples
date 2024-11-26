@@ -21,10 +21,10 @@ We leverage [coremltools](https://github.com/apple/coremltools) for testing and 
 
 ## Tutorials
 
+- How to convert Depth Pro for GPU and Neural Engine. [Source code notebook](https://github.com/huggingface/coreml-examples/tutorials/DepthPro/depth_pro_coreml_guide.ipynb)
 - How to convert Depth Anything v2 for GPU and Neural Engine. [Source code notebook](https://github.com/huggingface/coreml-examples/tutorials/depth-anything/depth-anything-coreml-guide.ipynb) <a target="_blank" href="https://colab.research.google.com/github/huggingface/coreml-examples/tutorials/depth-anything-coreml-guide.ipynb">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
-- How to convert Depth Pro for GPU and Neural Engine. [Source code notebook](https://github.com/huggingface/coreml-examples/tutorials/DepthPro/depth_pro_coreml_guide.ipynb)
 
 
 
