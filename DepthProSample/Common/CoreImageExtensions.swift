@@ -15,6 +15,35 @@ extension CIImage {
     }
 }
 
+extension CGImage {
+    func resized(to size: CGSize) -> CGImage? {
+        let destWidth = Int(size.width)
+        let destHeight = Int(size.height)
+        
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+        let bitmapInfo = CGImageAlphaInfo.premultipliedLast.rawValue
+        
+        guard let context = CGContext(
+            data: nil,
+            width: destWidth,
+            height: destHeight,
+            bitsPerComponent: 8,
+            bytesPerRow: 0,
+            space: colorSpace,
+            bitmapInfo: bitmapInfo
+        ) else {
+            return nil
+        }
+        
+        context.interpolationQuality = .high
+        
+        context.scaleBy(x: 1.0, y: 1.0)
+        context.draw(self, in: CGRect(x: 0, y: 0, width: destWidth, height: destHeight))
+        
+        return context.makeImage()
+    }
+}
+
 extension CIContext {
     /// Renders an image to a new pixel buffer.
     func render(_ image: CIImage, pixelFormat: OSType) -> CVPixelBuffer? {
