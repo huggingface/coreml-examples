@@ -15,16 +15,16 @@ The models showcased include:
 | [FastViT](FastViTSample/README.md)                         | Image Classification       | [ apple/coreml-FastViT-T8 ]( https://huggingface.co/apple/coreml-FastViT-T8 ) [ apple/coreml-FastViT-MA36 ]( https://huggingface.co/apple/coreml-FastViT-MA36 ) |
 | [Depth Anything V2 (small)](depth-anything-example/README.md) | Monocular Depth Estimation | [apple/coreml-depth-anything-v2-small](https://huggingface.co/apple/coreml-depth-anything-small)                                                                   |
 | [DETR (ResNet 50)](SemanticSegmentationSample/README.md)   | Semantic Segmentation      | [ apple/coreml-detr-semantic-segmentation ]( https://huggingface.co/apple/coreml-detr-semantic-segmentation )                                                   |
-
+| [DepthPro](DepthProSample/README.md) | Monocular Depth Estimation | [apple/DepthPro](https://huggingface.co/apple/DepthPro)                                                                   |
 
 We leverage [coremltools](https://github.com/apple/coremltools) for testing and implementing these optimisations. You can read more about it [here](https://apple.github.io/coremltools/docs-guides/source/opt-palettization-api.html).
 
 ## Tutorials
 
-- How to convert Depth Anything v2 for GPU and Neural Engine. [Source code notebook](https://github.com/huggingface/coreml-examples/tutorials/depth-anything-coreml-guide.ipynb) <a target="_blank" href="https://colab.research.google.com/github/huggingface/coreml-examples/tutorials/depth-anything-coreml-guide.ipynb">
+- How to convert Depth Anything v2 for GPU and Neural Engine. [Source code notebook](https://github.com/huggingface/coreml-examples/tutorials/depth-anything/depth-anything-coreml-guide.ipynb) <a target="_blank" href="https://colab.research.google.com/github/huggingface/coreml-examples/tutorials/depth-anything-coreml-guide.ipynb">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
-
+- How to convert Depth Pro for GPU and Neural Engine. [Source code notebook](https://github.com/huggingface/coreml-examples/tutorials/DepthPro/depth_pro_coreml_guide.ipynb)
 
 
 
