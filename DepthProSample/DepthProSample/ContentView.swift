@@ -181,7 +181,9 @@ struct ContentView: View {
     }
 
     private func processImageNID() async throws {
-        let model = try DepthProNIDPrunedQuantized()
+        let config = MLModelConfiguration()
+        config.computeUnits = .cpuAndNeuralEngine
+        let model = try DepthProNIDPrunedQuantized(configuration: config)
         let featureProvider = DepthProNIDPrunedQuantizedInput(pixel_values: pixelBuffer!)
 
         let result = try await model.prediction(input: featureProvider)
@@ -204,7 +206,9 @@ struct ContentView: View {
     }
 
     private func processImageMeters() async throws {
-        let model = try DepthProMetersPrunedQuantized()
+        let config = MLModelConfiguration()
+        config.computeUnits = .cpuAndNeuralEngine
+        let model = try DepthProMetersPrunedQuantized(configuration: config)
         let featureProvider = DepthProMetersPrunedQuantizedInput(
             pixel_values: pixelBuffer!,
             original_widths: MLShapedArray(
