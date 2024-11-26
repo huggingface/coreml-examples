@@ -62,7 +62,8 @@ struct ContentView: View {
                         case .failure(let error):
                             print(error)
                         }
-                    })
+                    }
+                )
                 .disabled(isProcessing)
             }
             VStack {
@@ -88,7 +89,7 @@ struct ContentView: View {
                             .foregroundColor(.gray)
                     }
                 }
-                
+
                 if processedImage == nil {
                     Button("Save Image") {
                         isImageExporterPresented = true
@@ -146,7 +147,8 @@ struct ContentView: View {
 
         let result = try await model.prediction(input: featureProvider)
         guard
-            let outputPixelBuffer = result.featureValue(for: "normalized_inverse_depth")?.imageBufferValue
+            let outputPixelBuffer = result.featureValue(for: "normalized_inverse_depth")?
+                .imageBufferValue
         else {
             print("The model did not return a 'normalized_inverse_depth' feature with an image.")
             return
@@ -160,8 +162,9 @@ struct ContentView: View {
             to: CGSize(width: originalSize!.width, height: originalSize!.height))
 
         self.processedCGImage = context.createCGImage(outputImage, from: outputImage.extent)!
-        self.processedImage = Image(decorative: self.processedCGImage!, scale: 1.0, orientation: .up)
-        
+        self.processedImage = Image(
+            decorative: self.processedCGImage!, scale: 1.0, orientation: .up)
+
         isProcessing = false
     }
 }
@@ -188,7 +191,8 @@ struct ImageDocument: FileDocument {
         let ciImage = CIImage(cgImage: image)
 
         guard
-            let pngData = context.pngRepresentation(of: ciImage, format: .ABGR8, colorSpace: colorSpace)
+            let pngData = context.pngRepresentation(
+                of: ciImage, format: .ABGR8, colorSpace: colorSpace)
         else {
             fatalError("Failed to generate PNG representation.")
         }
