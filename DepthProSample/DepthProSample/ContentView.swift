@@ -183,8 +183,8 @@ struct ContentView: View {
     private func processImageNID() async throws {
         let config = MLModelConfiguration()
         config.computeUnits = .cpuAndNeuralEngine
-        let model = try DepthProNIDPrunedQuantized(configuration: config)
-        let featureProvider = DepthProNIDPrunedQuantizedInput(pixel_values: pixelBuffer!)
+        let model = try DepthProNormalizedInverseDepth_pruned10_Qlinear(configuration: config)
+        let featureProvider = DepthProNormalizedInverseDepth_pruned10_QlinearInput(pixel_values: pixelBuffer!)
 
         let result = try await model.prediction(input: featureProvider)
         guard
@@ -208,8 +208,8 @@ struct ContentView: View {
     private func processImageMeters() async throws {
         let config = MLModelConfiguration()
         config.computeUnits = .cpuAndNeuralEngine
-        let model = try DepthProMetersPrunedQuantized(configuration: config)
-        let featureProvider = DepthProMetersPrunedQuantizedInput(
+        let model = try DepthPro_pruned10_Qlinear(configuration: config)
+        let featureProvider = DepthPro_pruned10_QlinearInput(
             pixel_values: pixelBuffer!,
             original_widths: MLShapedArray(
                 repeating: Float16(originalSize!.width), shape: [1, 1, 1, 1]))

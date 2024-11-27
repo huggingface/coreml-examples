@@ -4,15 +4,13 @@ This is an example project using [DepthPro](https://huggingface.co/apple/DepthPr
 
 ## Instructions
 
-1. Download models from [huggingface](https://huggingface.co/KeighBee/DepthPro-CoreML) and place them in the models folder in `DepthProSample`. 
-2. Rename `depthpro_pruned_quantized.mlpackage` to `DepthProMetersPrunedQuantized.mlpackage`
-3. Rename `depthpro_pruned_quantized_inverse_depth_normalized.mlpackage` to `DepthProNIDPrunedQuantized.mlpackage`
-4. Open `DepthProSample.xcodeproj` in XCode.
-5. Build & run the project!
+1. Download models from [huggingface](https://huggingface.co/KeighBee/coreml-DepthPro) and place them in the models folder in `DepthProSample`. 
+2. Open `DepthProSample.xcodeproj` in XCode.
+3. Build & run the project!
 
 ## Download
 
-CoreML packages are available in [KeighBee/DepthPro-CoreML](https://huggingface.co/KeighBee/DepthPro-CoreML).
+CoreML packages are available in [KeighBee/coreml-DepthPro](https://huggingface.co/KeighBee/coreml-DepthPro).
 
 Install `huggingface-cli`
 
@@ -20,13 +18,13 @@ Install `huggingface-cli`
 brew install huggingface-cli
 ```
 
-Download `depthpro_pruned_quantized.mlpackage` and `depthpro_pruned_quantized_inverse_depth_normalized.mlpackage` to the `models` directory:
+Download `DepthPro-pruned10-Qlinear.mlpackage` and `DepthProNormalizedInverseDepth-pruned10-Qlinear.mlpackage` to the `models` directory:
 
 ```bash
 huggingface-cli download \
   --local-dir models --local-dir-use-symlinks False \
-  KeighBee/DepthPro-CoreML \
-  --include "depthpro_pruned_quantized*.mlpackage/*"
+  KeighBee/coreml-DepthPro \
+  --include "DepthProNormalizedInverseDepth-pruned10-Qlinear.mlpackage/*" "DepthPro-pruned10-Qlinear.mlpackage/*"
 ```
 
 To download all the model versions, including quantized ones, skip the `--include` argument.
