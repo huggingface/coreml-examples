@@ -15,7 +15,7 @@ The models showcased include:
 | [FastViT](FastViTSample/README.md)                         | Image Classification       | [ apple/coreml-FastViT-T8 ]( https://huggingface.co/apple/coreml-FastViT-T8 ) [ apple/coreml-FastViT-MA36 ]( https://huggingface.co/apple/coreml-FastViT-MA36 ) |
 | [Depth Anything V2 (small)](depth-anything-example/README.md) | Monocular Depth Estimation | [apple/coreml-depth-anything-v2-small](https://huggingface.co/apple/coreml-depth-anything-small)                                                                   |
 | [DETR (ResNet 50)](SemanticSegmentationSample/README.md)   | Semantic Segmentation      | [ apple/coreml-detr-semantic-segmentation ]( https://huggingface.co/apple/coreml-detr-semantic-segmentation )                                                   |
-| [DepthPro](DepthProSample/README.md) | Monocular Depth Estimation | [KeighBee/DepthPro-CoreML](https://huggingface.co/KeighBee/DepthPro-CoreML)                                                                   |
+| [DepthPro](DepthProSample/README.md) | Monocular Depth Estimation | [KeighBee/coreml-DepthPro](https://huggingface.co/KeighBee/coreml-DepthPro)                                                                   |
 
 We leverage [coremltools](https://github.com/apple/coremltools) for testing and implementing these optimisations. You can read more about it [here](https://apple.github.io/coremltools/docs-guides/source/opt-palettization-api.html).
 
