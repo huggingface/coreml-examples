@@ -1,0 +1,26 @@
+[project]
+name = "DepthPro-CoreML-Conversion"
+version = "0.1.0"
+description = "Convert the pytorch implementation of DepthPro to CoreML"
+readme = "README.md"
+dependencies = [
+    "coremlprofiler",
+    "coremltools>=8.0",
+    "depth-pro",
+    "huggingface-hub>=0.26.2",
+    "ipykernel>=6.29.5",
+    "ipywidgets>=8.1.5",
+    "matplotlib>=3.9.2",
+    "numpy>=1.26.4",
+    "pillow>=11.0.0",
+    "python-powermetrics",
+    "scikit-learn>=1.5.2",
+    "scipy>=1.14.1",
+    "torch>=2.5.1",
+    "torchvision>=0.20.1",
+]
+
+[tool.uv.sources]
+python-powermetrics = { git = "https://github.com/greenrazer/capture-powermetrics" }
+coremlprofiler = { git = "https://github.com/FL33TW00D/coremlprofiler" }
+depth-pro = { git = "https://github.com/greenrazer/ml-depth-pro", rev = "export_coreml" }
