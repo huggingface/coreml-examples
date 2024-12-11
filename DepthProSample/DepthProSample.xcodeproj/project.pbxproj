@@ -35,9 +35,23 @@
 		2AD1B6E02CF4FC7800FC0E5B /* DepthProSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DepthProSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		2ABF53B02D0A261F00DEFFF9 /* Exceptions for "DepthProSample" folder in "DepthProSample" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				models/.cache/huggingface/download/DepthProNormalizedInverseDepthPruned10QuantizedLinear.mlpackage,
+				models/.cache/huggingface/download/DepthProPruned10QuantizedLinear.mlpackage,
+			);
+			target = 2AD1B6DF2CF4FC7800FC0E5B /* DepthProSample */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		2AD1B6E12CF4FC7800FC0E5B /* DepthProSample */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				2ABF53B02D0A261F00DEFFF9 /* Exceptions for "DepthProSample" folder in "DepthProSample" target */,
+			);
 			path = DepthProSample;
 			sourceTree = "<group>";
 		};

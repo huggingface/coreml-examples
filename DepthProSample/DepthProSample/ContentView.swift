@@ -183,15 +183,15 @@ struct ContentView: View {
     private func processImageNID() async throws {
         let config = MLModelConfiguration()
         config.computeUnits = .cpuAndNeuralEngine
-        let model = try DepthProNormalizedInverseDepth_pruned10_Qlinear(configuration: config)
-        let featureProvider = DepthProNormalizedInverseDepth_pruned10_QlinearInput(pixel_values: pixelBuffer!)
+        let model = try DepthProNormalizedInverseDepthPruned10QuantizedLinear(configuration: config)
+        let featureProvider = DepthProNormalizedInverseDepthPruned10QuantizedLinearInput(image: pixelBuffer!)
 
         let result = try await model.prediction(input: featureProvider)
         guard
-            let outputPixelBuffer = result.featureValue(for: "normalized_inverse_depth")?
+            let outputPixelBuffer = result.featureValue(for: "normalizedInverseDepth")?
                 .imageBufferValue
         else {
-            print("The model did not return a 'normalized_inverse_depth' feature with an image.")
+            print("The model did not return a 'normalizedInverseDepth' feature with an image.")
             return
         }
 
@@ -208,17 +208,17 @@ struct ContentView: View {
     private func processImageMeters() async throws {
         let config = MLModelConfiguration()
         config.computeUnits = .cpuAndNeuralEngine
-        let model = try DepthPro_pruned10_Qlinear(configuration: config)
-        let featureProvider = DepthPro_pruned10_QlinearInput(
-            pixel_values: pixelBuffer!,
-            original_widths: MLShapedArray(
+        let model = try DepthProPruned10QuantizedLinear(configuration: config)
+        let featureProvider = DepthProPruned10QuantizedLinearInput(
+            image: pixelBuffer!,
+            originalWidth: MLShapedArray(
                 repeating: Float16(originalSize!.width), shape: [1, 1, 1, 1]))
 
         let result = try await model.prediction(input: featureProvider)
         guard
-            let outputDepthMeters = result.featureValue(for: "depth_meters")?.multiArrayValue
+            let outputDepthMeters = result.featureValue(for: "depthMeters")?.multiArrayValue
         else {
-            print("The model did not return a 'depth_meters' feature with an image.")
+            print("The model did not return a 'depthMeters' feature with an image.")
             return
         }
 
